@@ -12,10 +12,10 @@ outputs:
 runs:
   using: "composite"
   steps:
-    - run: echo Hello ${{ inputs.who-to-greet }}.
-      shell: bash
-    - id: random-number-generator
-      run: echo "::set-output name=random-id::$(echo $RANDOM)"
-      shell: bash
-    - run: ${{ github.action_path }}/goodbye.sh
-      shell: bash
+    - run: |
+      OM_BUILDS=https://build.openmodelica.org/omc/builds/linux/releases/${{ inputs.version }}
+      echo "deb $OM_BUILDS `lsb_release -cs` release" > /etc/apt/sources.list.d/openmodelica.list
+      echo "deb-src $OM_BUILDS `lsb_release -cs` release" >> /etc/apt/sources.list.d/openmodelica.list
+      wget -q http://build.openmodelica.org/apt/openmodelica.asc -O- | sudo apt-key add -
+      sudo apt-get update
+      sudo apt-get install openmodelica
