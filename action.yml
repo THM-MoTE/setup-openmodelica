@@ -1,5 +1,5 @@
 name: 'Setup OpenModelica'
-description: 'Install OpenModelica using apt-get packages from build.openmodelica.org'
+description: 'Install OpenModelica using ubuntu packages from build.openmodelica.org'
 inputs:
   version:
     description: 'OpenModelica version (exact)'
