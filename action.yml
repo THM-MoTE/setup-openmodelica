@@ -15,3 +15,4 @@ runs:
         wget -qO - http://build.openmodelica.org/apt/openmodelica.asc | sudo apt-key add -
         sudo apt-get update
         sudo apt-get install openmodelica
+      shell: bash
