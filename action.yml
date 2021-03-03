@@ -10,8 +10,8 @@ runs:
   steps:
     - run: |
         OM_BUILDS=https://build.openmodelica.org/omc/builds/linux/releases/${{ inputs.version }}
-        sudo echo "deb $OM_BUILDS `lsb_release -cs` release" > /etc/apt/sources.list.d/openmodelica.list
-        sudo echo "deb-src $OM_BUILDS `lsb_release -cs` release" >> /etc/apt/sources.list.d/openmodelica.list
+        echo "deb $OM_BUILDS `lsb_release -cs` release" | sudo tee /etc/apt/sources.list.d/openmodelica.list
+        echo "deb-src $OM_BUILDS `lsb_release -cs` release" | sudo tee -a /etc/apt/sources.list.d/openmodelica.list
         wget -qO - http://build.openmodelica.org/apt/openmodelica.asc | sudo apt-key add -
         sudo apt-get update
         sudo apt-get install openmodelica
