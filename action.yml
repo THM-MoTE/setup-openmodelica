@@ -1,14 +1,10 @@
-name: 'Hello World'
-description: 'Greet someone'
+name: 'Setup OpenModelica'
+description: 'Install OpenModelica using apt-get packages from build.openmodelica.org'
 inputs:
-  who-to-greet:  # id of input
-    description: 'Who to greet'
+  version:
+    description: 'OpenModelica version (exact)'
     required: true
-    default: 'World'
-outputs:
-  random-number:
-    description: "Random number"
-    value: ${{ steps.random-number-generator.outputs.random-id }}
+    default: '1.16.2'
 runs:
   using: "composite"
   steps:
